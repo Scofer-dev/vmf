@@ -5,18 +5,9 @@ class CfgPatches {
         name = COMPONENT_NAME;
         units[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {
-            "cba_main"
-        };
+        requiredAddons[] = {"VMF_main","zen_main"};
         author = "Scofer";
         VERSION_CONFIG;
-    };
-};
-
-class CfgFactionClasses {
-    class NO_CATEGORY;
-    class GVARMAIN(modules): NO_CATEGORY {
-        displayName = "VMF";
     };
 };
 
@@ -24,8 +15,16 @@ class CfgFactionClasses {
 
 class CfgFunctions {
     class VMF {
-        class main {
-            PATHTO_FNCFOLDER(curatorInitModule);
+        class safeStart {
+            PATHTO_FNCFOLDER(safeStartInit);
+            PATHTO_FNCFOLDER(missionLive);
+        };
+        class curator {
+            PATHTO_FNCFOLDER(missionLiveDialog);
         };
     };
+};
+
+class RscTitles {
+    #include "safeStart.h"
 };

@@ -17,6 +17,12 @@ class Cfg3DEN {
 						typeName = "STRING";
 						condition = "objectControllable";
 
+						/*	Test this
+						condition = "script";
+						conditionScript = "_this get3DENAttribute 'ControlMP' select 0 == true";
+						*/
+
+
 						class Values { //https://community.bistudio.com/wiki/assignTeam
 							class White {
 								name = "White";

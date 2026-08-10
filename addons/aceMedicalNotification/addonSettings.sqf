@@ -1,3 +1,4 @@
+/* Currently enabled by module
 [
 	QGVAR(enabled),	//Setting variable name
 	"CHECKBOX",		//Setting type
@@ -26,6 +27,7 @@
 	},
 	false	//Need restart
 ] call CBA_fnc_addSetting;
+*/
 
 [
 	QGVAR(textSize),

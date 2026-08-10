@@ -11,8 +11,6 @@ class CfgPatches {
     };
 };
 
-#include "CfgEventHandlers.hpp"
-
 class CfgFunctions {
     class VMF {
         class safeStart {
@@ -28,3 +26,7 @@ class CfgFunctions {
 class RscTitles {
     #include "safeStart.h"
 };
+
+
+#include "CfgEventHandlers.hpp"
+#include "CfgVehicles.hpp"

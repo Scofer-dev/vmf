@@ -20,12 +20,16 @@ class CfgFactionClasses {
     };
 };
 
-#include "CfgEventHandlers.hpp"
-
 class CfgFunctions {
     class VMF {
         class main {
+            PATHTO_FNCFOLDER(initFramework);
+        };
+        class curator {
             PATHTO_FNCFOLDER(curatorInitModule);
         };
     };
 };
+
+#include "CfgEventHandlers.hpp"
+#include "CfgVehicles.hpp"

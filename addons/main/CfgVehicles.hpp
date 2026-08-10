@@ -19,43 +19,42 @@ class CfgVehicles {
         };
     };
 
-    class GVARMAIN(safeStart): Module_F {
+    class GVARMAIN(frameworkSettings): Module_F {
         author = "Scofer";
         scope = 2;
-        displayName = "Safe Start";
-        isGlobal = 2;   //Persistent global execution
+        displayName = "Void Mission Framework";
+        isGlobal = 0;   //Server execution
         category = QGVARMAIN(modules);
         icon = "";
-        function = QFUNC(safeStartInit);
+        function = QFUNC(initFramework);
         functionPriority = 0;
         isTriggerActivated = 0;
         isDisposable = 1;
 
         class Attributes: AttributesBase {
+            class VMF_safeStartSubCat {
+                property = "VMF_safeStartSubCat";
+                title = "Safe Start";
+                control = "SubCategory";
+            };
+
+            class VMF_enableSafeStart: Checkbox {
+                property = "VMF_enableSafeStart";
+                title "Enable Safe Start";
+                tooltip = "Enable Safe Start, preventing players from taking and dealing damage until disabled"
+            };
+
+
+
+
             class ModuleDescription: ModuleDescription{};
         };
 
         class ModuleDescription: ModuleDescription {
             description[] = {
-                "Activates Safe Start at the start of the mission.",
-                "Safe Start can be deactivated by using the Mission Live Zeus module or by otherwise calling VMF_fnc_missionLive on the server."
+                "Initialises the Void Mission Framework",
+                "Individual features can be enabled and disabled in the module attributes"
             };
-        };
-    };
-
-
-    class GVAR(missionLive): Module_F {
-        author = "Scofer";
-        scope = 1;
-        scopeCurator = 2;
-        displayName = "Mission Live";
-        isGlobal = 0;
-        category = QGVARMAIN(modules);
-        icon = "";
-        function = QFUNC(missionLiveDialog);
-        functionPriority = 1;
-        class eventHandlers {
-            init = _this call vmf_fnc_curatorInitModule;
         };
     };
 };

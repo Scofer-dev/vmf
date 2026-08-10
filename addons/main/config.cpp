@@ -5,9 +5,7 @@ class CfgPatches {
         name = COMPONENT_NAME;
         units[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {
-            "cba_main"
-        };
+        requiredAddons[] = {"cba_main"};
         author = "Scofer";
         VERSION_CONFIG;
     };

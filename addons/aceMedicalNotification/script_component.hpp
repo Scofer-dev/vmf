@@ -1,4 +1,4 @@
-#define COMPONENT safeStart
+#define COMPONENT aceMedicalNotification
 
 #include "\z\vmf\addons\main\script_mod.hpp"
 

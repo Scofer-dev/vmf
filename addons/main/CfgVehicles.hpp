@@ -41,8 +41,24 @@ class CfgVehicles {
             class VMF_enableSafeStart: Checkbox {
                 property = "VMF_enableSafeStart";
                 title "Enable Safe Start";
-                tooltip = "Enable Safe Start, preventing players from taking and dealing damage until disabled"
+                tooltip = "Enable Safe Start, preventing players from taking and dealing damage until disabled";
             };
+
+            /*
+
+            class VMF_medicalNotificationSubCat {
+                property = "VMF_medicalNotificationSubCat";
+                title = "ACE Medical Notification";
+                control = "SubCategory";
+            };
+
+            class VMF_enableMedicalNotification: Checkbox {
+                property = "VMF_enableMedicalNotification";
+                title "Enable ACE Medical Notifications";
+                tooltip = "Enable ACE Medical Notifications, informing players when they're being treated";
+            };
+
+            */
 
 
 

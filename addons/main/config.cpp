@@ -13,6 +13,9 @@ class CfgPatches {
     };
 };
 
+#include "CfgEventHandlers.hpp"
+#include "CfgVehicles.hpp"
+
 class CfgFactionClasses {
     class NO_CATEGORY;
     class GVARMAIN(modules): NO_CATEGORY {
@@ -30,6 +33,3 @@ class CfgFunctions {
         };
     };
 };
-
-#include "CfgEventHandlers.hpp"
-#include "CfgVehicles.hpp"

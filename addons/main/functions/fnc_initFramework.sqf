@@ -52,3 +52,21 @@ if (_module getVariable ["VMF_enableTeamBFT",false]) then {
 
     [_updateDelay] remoteExec [QEFUNC(bft,teamMarkers),[0,-2] select isDedicated,true];
 };
+
+
+if (_module getVariable ["VMF_enableBattlefieldSounds",false]) then {
+    private _firefightSounds = _module getVariable ["VMF_firefightSounds","['BattlefieldFirefight1_3D','BattlefieldFirefight2_3D','BatlefieldFirefight3_3D','BattlefieldFirefight4_3D','','']"];
+    private _explosionSounds = _module getVariable ["VMF_explosionSounds","['BattlefieldExplosions1_3D','BattlefieldExplosions2_3D','BattlefieldExplosions3_3D','BattlefieldExplosions4_3D','BattlefieldExplosions5_3D','','','','',']"];
+    private _aircraftSounds = _module getVariable ["VMF_aircraftSounds","['BattlefieldHeli1_3D','BattlefieldHeli2_3D','BattlefieldHeli3_3D','BattlefieldJet1_3D','BattlefieldJet2_3D','BattlefieldJet3_3D','','','','','','']"];
+
+    _firefightSounds = _firefightSounds splitString " " joinString "" splitString ",";
+    _explosionSounds = _explosionSounds splitString " " joinString "" splitString ",";
+    _aircraftSounds = _aircraftSounds splitString " " joinString "" splitString ",";
+
+    [_firefightSounds,_explosionSounds,_aircraftSounds] remoteExec [QEFUNC(presentation,battlefieldSounds)[0,-2] select isDedicated,true];
+};
+
+
+
+
+

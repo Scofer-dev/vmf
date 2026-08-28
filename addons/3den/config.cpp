@@ -11,5 +11,13 @@ class CfgPatches {
     };
 };
 
+class CfgFunctions {
+    class VMF {
+        class createFile {
+            PATHTO_FNCFOLDER(createArsenalArrayFile);
+        };
+    };
+};
+
 #include "Cfg3DEN.hpp"
 #include "CfgEventHandlers.hpp"

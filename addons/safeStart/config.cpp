@@ -12,16 +12,11 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "CfgVehicles.hpp"
 
 class CfgFunctions {
     class VMF {
         class safeStart {
             PATHTO_FNCFOLDER(safeStartInit);
-            PATHTO_FNCFOLDER(missionLive);
-        };
-        class curator {
-            PATHTO_FNCFOLDER(missionLiveDialog);
         };
     };
 };

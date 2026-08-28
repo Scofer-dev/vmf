@@ -1,0 +1,9 @@
+keys/*
+ToDo/*
+
+
+*.bat
+*.biprivatekey
+*.txt
+
+performanceTest.sqf

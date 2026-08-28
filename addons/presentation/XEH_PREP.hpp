@@ -1,5 +1,5 @@
-PREP(battlefieldSounds);
-PREP(widescreen);
-PREP(fadeEffect);
-PREP(subtitles);
-PREP(showSubtitle);
+PREPFOLDER(battlefieldSounds);
+PREPFOLDER(widescreen);
+PREPFOLDER(fadeEffect);
+PREPFOLDER(subtitles);
+PREPFOLDER(showSubtitle);

@@ -44,11 +44,6 @@ class CfgVehicles {
                 defaultValue = "true";
             };
 
-            class ModuleDescription: ModuleDescription{};
-        };
-
-
-            /*
             class VMF_medicalNotificationSubCat {
                 property = "VMF_medicalNotificationSubCat";
                 title = "ACE Medical Notification";
@@ -56,12 +51,17 @@ class CfgVehicles {
             };
             class VMF_enableMedicalNotification: Checkbox {
                 property = "VMF_enableMedicalNotification";
-                title = "Enable ACE Medical Notifications";
+                displayName = "Enable ACE Medical Notifications";
                 tooltip = "Enable ACE Medical Notifications, informing players when they're being treated";
                 defaultValue = "true";
             };
 
+            class ModuleDescription: ModuleDescription{};
+        };
 
+
+            /*
+        
 
             class VMF_groupBFTSubCat {
                 property = "VMF_groupBFTSubCat";
@@ -70,13 +70,13 @@ class CfgVehicles {
             };
             class VMF_enableGroupBFT: Checkbox {
                 property = "VMF_enableGroupBFT";
-                title = "Enable Group BFT";
+                displayName = "Enable Group BFT";
                 tooltip = "Enable Group BFT, showing the approximate location of friendly player groups";
                 defaultValue = "true";
             };
             class VMF_groupBFTUpdateTimer: Edit {
                 property = "VMF_groupBFTUpdateDelay";
-                title = "Group BFT Update Delay";
+                displayName = "Group BFT Update Delay";
                 tooltip = "The delay in seconds between Group Marker position updates";
                 defaultValue = "3";
                 typeName = "NUMBER";
@@ -84,7 +84,7 @@ class CfgVehicles {
             };
             class VMF_groupBFTMarkerMaxUnitDistance: Edit {
                 property = "VMF_groupMarkerMaxUnitDistance";
-                title = "Group Marker Max Unit Distance";
+                displayName = "Group Marker Max Unit Distance";
                 tooltip = "The maximum distance a unit can be from its group leader for its position to be counted for the group marker position";
                 defaultValue = "100";
                 typeName = "NUMBER";
@@ -92,7 +92,7 @@ class CfgVehicles {
             };
             class VMF_groupBFTFriendSideMarkers: Checkbox {
                 property = "VMF_groupBFTFriendSideMarkers";
-                title = "Friendly Side Markers";
+                displayName = "Friendly Side Markers";
                 tooltip = "Shows players group markers from friendly sides, not just their own side";
                 defaultValue = "true";
             };
@@ -106,13 +106,13 @@ class CfgVehicles {
             };
             class VMF_enableTeamBFT: Checkbox {
                 property = "VMF_enableTeamBFT";
-                title = "Enable Team BFT";
+                displayName = "Enable Team BFT";
                 tooltip = "Enable Team BFT, showing the location of units in the same group";
                 defaultValue = "true";
             };
             class VMF_teamBFTUpdateDelay: Edit {
                 property = "VMF_teamBFTUpdateDelay";
-                title = "Team BFT Update Delay";
+                displayName = "Team BFT Update Delay";
                 tooltip = "The delay in seconds between Team Marker position updates";
                 defaultValue = "3";
                 typeName = "NUMBER";
@@ -129,25 +129,25 @@ class CfgVehicles {
             };
             class VMF_enableBattlefieldSounds: Checkbox {
                 property = "VMF_enableBattlefieldSounds";
-                title = "Enable Battlefield Sounds";
+                displayName = "Enable Battlefield Sounds";
                 tooltip = "Enables distant battlefield sounds";
                 defaultValue = "false";
             };
             class VMF_firefightSounds: Edit {
                 property = "VMF_firefightSounds";
-                title ="Firefight Sounds";
+                displayName ="Firefight Sounds";
                 tooltip = "Array of firefight sounds that can be played. Sounds must be defined in CfgSounds";
                 defaultValue = ""["BattlefieldFirefight1_3D","BattlefieldFirefight2_3D","BattlefieldFirefight3_3D","BattlefieldFirefight4_3D","",""]"";
             };
             class VMF_explosionSounds: Edit {
                 property = "VMF_explosionSounds";
-                title ="Explosion Sounds";
+                displayName ="Explosion Sounds";
                 tooltip = "Array of explsions sounds that can be played. Sounds must be defined in CfgSounds";
                 defaultValue = ""["BattlefieldExplosions1_3D","BattlefieldExplosions2_3D","BattlefieldExplosions3_3D","BattlefieldExplosions4_3D","BattlefieldExplosions5_3D","","","","",""]"";
             };
             class VMF_aircraftSounds: Edit {
                 property = "VMF_aircraftSounds";
-                title ="Aircraft Sounds";
+                displayName ="Aircraft Sounds";
                 tooltip = "Array of aircraft sounds that can be played. Sounds must be defined in CfgSounds";
                 defaultValue = ""["BattlefieldHeli1_3D","BattlefieldHeli2_3D","BattlefieldHeli3_3D","BattlefieldJet1_3D","BattlefieldJet2_3D","BattlefieldJet3_3D","","","","","",""]"";
             };

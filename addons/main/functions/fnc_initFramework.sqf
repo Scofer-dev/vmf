@@ -32,11 +32,16 @@ if (_module getVariable ["VMF_enableSafeStart",false]) then {
     [] remoteExec ["VMF_fnc_safeStartInit",[0,-2] select isDedicated,true];
 };
 
+if (_module getVariable ["VMF_enableMedicalNotification",false]) then {
+    [] remoteExec ["VMF_fnc_addMedicalEvent",[0,-2] select isDedicated,true];
+};
+
+
+
+
 /*
 
-if (_module getVariable ["VMF_enableMedicalNotification",false]) then {
-    [] remoteExec [QEFUNC(aceMedicalNotification,addMedicalEvent),[0,-2] select isDedicated,true];
-};
+
 
 
 if (_module getVariable ["VMF_enableGroupBFT",false]) then {

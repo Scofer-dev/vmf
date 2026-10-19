@@ -39,10 +39,13 @@ class CfgVehicles {
             };
             class VMF_enableSafeStart: Checkbox {
                 property = "VMF_enableSafeStart";
-                title = "Enable Safe Start";
+                displayName = "Enable Safe Start";
                 tooltip = "Enable Safe Start, preventing players from taking and dealing damage until disabled";
                 defaultValue = "true";
             };
+
+            class ModuleDescription: ModuleDescription{};
+        };
 
 
             /*
@@ -148,11 +151,8 @@ class CfgVehicles {
                 tooltip = "Array of aircraft sounds that can be played. Sounds must be defined in CfgSounds";
                 defaultValue = ""["BattlefieldHeli1_3D","BattlefieldHeli2_3D","BattlefieldHeli3_3D","BattlefieldJet1_3D","BattlefieldJet2_3D","BattlefieldJet3_3D","","","","","",""]"";
             };
-
-
             */
-            class ModuleDescription: ModuleDescription{};
-        };
+        
 
         class ModuleDescription: ModuleDescription {
             description[] = {

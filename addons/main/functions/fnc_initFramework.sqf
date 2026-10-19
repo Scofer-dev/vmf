@@ -36,30 +36,21 @@ if (_module getVariable ["VMF_enableMedicalNotification",false]) then {
     [] remoteExec ["VMF_fnc_addMedicalEvent",[0,-2] select isDedicated,true];
 };
 
-
-
-
-/*
-
-
-
-
 if (_module getVariable ["VMF_enableGroupBFT",false]) then {
     private _updateDelay = _module getVariable ["VMF_groupBFTUpdateDelay",3];
     private _maxDistance = _module getVariable ["VMF_groupBFTMarkerMaxUnitDistance",100];
     private _friendSideMarkers = _module getVariable ["VMF_groupBFTFriendSideMarkers",true];
 
-    [_updateDelay,_maxDistance,_friendSideMarkers] remoteExec [QEFUNC(bft,groupMarkers),[0,-2] select isDedicated,true];
+    [_updateDelay,_maxDistance,_friendSideMarkers] remoteExec ["VMF_fnc_groupBftInit",[0,-2] select isDedicated,true];
 };
-
 
 if (_module getVariable ["VMF_enableTeamBFT",false]) then {
     private _updateDelay = _module getVariable ["VMF_teamBFTUpdateDelay",3];
 
-    [_updateDelay] remoteExec [QEFUNC(bft,teamMarkers),[0,-2] select isDedicated,true];
+    [_updateDelay] remoteExec ["VMF_fnc_teamBftInit",[0,-2] select isDedicated,true];
 };
 
-
+/*
 if (_module getVariable ["VMF_enableBattlefieldSounds",false]) then {
     private _firefightSounds = _module getVariable ["VMF_firefightSounds","['BattlefieldFirefight1_3D','BattlefieldFirefight2_3D','BatlefieldFirefight3_3D','BattlefieldFirefight4_3D','','']"];
     private _explosionSounds = _module getVariable ["VMF_explosionSounds","['BattlefieldExplosions1_3D','BattlefieldExplosions2_3D','BattlefieldExplosions3_3D','BattlefieldExplosions4_3D','BattlefieldExplosions5_3D','','','','',']"];

@@ -25,7 +25,7 @@ class CfgVehicles {
         displayName = "Void Mission Framework";
         isGlobal = 0;   //Server execution
         category = "VMF_modules";
-        icon = "";
+        icon = "\z\vmf\addons\main\void_white_128.paa";
         function = "VMF_fnc_initFramework";
         functionPriority = 0;
         isTriggerActivated = 0;
@@ -44,6 +44,7 @@ class CfgVehicles {
                 defaultValue = "true";
             };
 
+
             class VMF_medicalNotificationSubCat {
                 property = "VMF_medicalNotificationSubCat";
                 title = "ACE Medical Notification";
@@ -56,12 +57,6 @@ class CfgVehicles {
                 defaultValue = "true";
             };
 
-            class ModuleDescription: ModuleDescription{};
-        };
-
-
-            /*
-        
 
             class VMF_groupBFTSubCat {
                 property = "VMF_groupBFTSubCat";
@@ -98,7 +93,6 @@ class CfgVehicles {
             };
 
 
-
             class VMF_teamBFTSubCat {
                 property = "VMF_teamBFTSubCat";
                 title = "Team Blue Force Tracker";
@@ -119,7 +113,11 @@ class CfgVehicles {
                 validate = "number";
             };
 
+            class ModuleDescription: ModuleDescription{};
+        };
 
+
+            /*
             
             class VMF_battlefieldSoundsSubCat {
                 property = "VMF_battlefieldSoundsSubCat";

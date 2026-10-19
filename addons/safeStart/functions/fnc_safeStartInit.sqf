@@ -32,17 +32,15 @@ waitUntil {!isNull player};
 
 if !(missionNamespace getVariable ["VMF_safeStartEnabled",true]) exitWith {};
 
+if (missionNamespace getVariable ["VMF_safeStartRunning",false]) exitWith {systemChat "Safe Start already running"};
+missionNamespace setVariable ["VMF_safeStartRunning",true];
+
 player allowDamage false;
 
 //Find out the current status of ACE Advanced Throwing so it can be restored to that state when Safe Start ends
 private _aceThrowing = ace_advanced_throwing_enabled;
-
-systemChat str(_aceThrowing);
-
 //Disable throwing
 ace_advanced_throwing_enabled = false;
-
-systemChat str(ace_advanced_throwing_enabled);
 
 //Make player immune to WBK melee damage
 player setVariable ['IMS_IsUnitInvicibleScripted',1,true];

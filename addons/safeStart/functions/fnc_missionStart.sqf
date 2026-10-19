@@ -36,4 +36,6 @@ if !(missionNamespace getVariable ["VMF_missionLive",false]) then {
 missionNamespace setVariable ["VMF_missionLive",true,true];
 
 missionNamespace setVariable ["VMF_safeStartEnabled",false,true];
+missionNamespace setVariable ["VMF_safeStartRunning",false,true];
+
 missionNamespace setVariable ["VMF_arsenalEnabled",false,true];

@@ -1,2 +1,0 @@
-PREPFOLDER(addMedicalEvent);
-PREPFOLDER(displayNotification);

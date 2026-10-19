@@ -19,14 +19,14 @@ class CfgVehicles {
         };
     };
 
-    class GVARMAIN(frameworkSettings): Module_F {
+    class VMF_frameworkSettings: Module_F {
         author = "Scofer";
         scope = 2;
         displayName = "Void Mission Framework";
         isGlobal = 0;   //Server execution
-        category = QGVARMAIN(modules);
+        category = "VMF_modules";
         icon = "";
-        function = QFUNC(initFramework);
+        function = "VMF_fnc_initFramework";
         functionPriority = 0;
         isTriggerActivated = 0;
         isDisposable = 1;
@@ -45,7 +45,7 @@ class CfgVehicles {
             };
 
 
-
+            /*
             class VMF_medicalNotificationSubCat {
                 property = "VMF_medicalNotificationSubCat";
                 title = "ACE Medical Notification";
@@ -150,7 +150,7 @@ class CfgVehicles {
             };
 
 
-
+            */
             class ModuleDescription: ModuleDescription{};
         };
 

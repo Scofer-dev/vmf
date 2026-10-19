@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {};
+        units[] = {"VMF_frameworkSettings"};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"cba_main"};
         author = "Scofer";
@@ -11,12 +11,11 @@ class CfgPatches {
     };
 };
 
-#include "CfgEventHandlers.hpp"
 #include "CfgVehicles.hpp"
 
 class CfgFactionClasses {
     class NO_CATEGORY;
-    class GVARMAIN(modules): NO_CATEGORY {
+    class VMF_modules: NO_CATEGORY {
         displayName = "VMF";
     };
 };

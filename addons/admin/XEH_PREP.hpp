@@ -1,3 +1,0 @@
-PREPFOLDER(missionStart);
-
-PREPFOLDER(missionStartDialog);

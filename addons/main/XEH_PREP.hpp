@@ -1,3 +1,0 @@
-PREPFOLDER(initFramework);
-
-PREPFOLDER(curatorInitModule);

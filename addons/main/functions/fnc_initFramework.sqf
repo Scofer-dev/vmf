@@ -27,13 +27,32 @@ if !(isServer) exitWith {};
 private _module = param [0, objNull, [objNull]];
 if (isNull _module) exitWith {deleteVehicle _module};
 
+diag_log "[VMF initFramework] Start VMF Initialisation";
+
 if (_module getVariable ["VMF_enableSafeStart",false]) then {
     missionNamespace setVariable ["VMF_safeStartEnabled",true,true];
     [] remoteExec ["VMF_fnc_safeStartInit",[0,-2] select isDedicated,true];
+
+    diag_log "[VMF initFramework] Safe Start enabled";
+
+    private _arsenalFile = _module getVariable ["VMF_arsenalArrayFile","arsenalArrays.sqf]"];
+    if (fileExists _arsenalFile) then {
+        [_arsenalFile] remoteExec ["VMF_fnc_addArsenal",[0,-2] select isDedicated,true];
+
+        diag_log "[VMF initFramework] Arsenal Array File found, Safe Start Arsenal enabled";
+    } else {
+        diag_log "[VMF initFramework] Arsenal Array File not found, Safe Start Arsenal disabled";
+    };
+} else {
+    diag_log "[VMF initFramework] Safe Start disabled";
 };
 
 if (_module getVariable ["VMF_enableMedicalNotification",false]) then {
     [] remoteExec ["VMF_fnc_addMedicalEvent",[0,-2] select isDedicated,true];
+
+    diag_log "[VMF initFramework] ACE Medical Notification enabled";
+} else {
+    diag_log "[VMF initFramework] ACE Medical Notification disabled";
 };
 
 if (_module getVariable ["VMF_enableGroupBFT",false]) then {
@@ -42,13 +61,23 @@ if (_module getVariable ["VMF_enableGroupBFT",false]) then {
     private _friendSideMarkers = _module getVariable ["VMF_groupBFTFriendSideMarkers",true];
 
     [_updateDelay,_maxDistance,_friendSideMarkers] remoteExec ["VMF_fnc_groupBftInit",[0,-2] select isDedicated,true];
+
+    diag_log "[VMF initFramework] Group BFT enabled";
+} else {
+    diag_log "[VMF initFramework] Group BFT disabled";
 };
 
 if (_module getVariable ["VMF_enableTeamBFT",false]) then {
     private _updateDelay = _module getVariable ["VMF_teamBFTUpdateDelay",3];
 
     [_updateDelay] remoteExec ["VMF_fnc_teamBftInit",[0,-2] select isDedicated,true];
+
+    diag_log "[VMF initFramework] Team BFT enabled";
+} else {
+    diag_log "[VMF initFramework] Team BFT disabled";
 };
+
+diag_log "[VMF initFramework] End VMF Initialisation";
 
 /*
 if (_module getVariable ["VMF_enableBattlefieldSounds",false]) then {

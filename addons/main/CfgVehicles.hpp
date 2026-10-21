@@ -43,6 +43,12 @@ class CfgVehicles {
                 tooltip = "Enable Safe Start, preventing players from taking and dealing damage until disabled";
                 defaultValue = "true";
             };
+            class VMF_arsenalArrayFile: Edit {
+                property = "VMF_arsenalArrayFile";
+                displayName = "Arsenal Array File";
+                tooltip = "The mission file that returns an array of all the items a player can access in the Safe Start Arsenal. Ignored if file doesn't exist.";
+                defaultValue = "arsenalArrays.sqf";
+            };
 
 
             class VMF_medicalNotificationSubCat {

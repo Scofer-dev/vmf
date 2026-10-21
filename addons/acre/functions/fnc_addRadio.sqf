@@ -11,8 +11,8 @@ Execution:
 	- Global: Yes
 
 Parameters:
-    0: Radio Classname <String>             Default: "ACRE_PRC343"      https://acre2.idi-systems.com/wiki/class-names#radios
-    1: Unit Type Array <Array of Strings>   Default: []
+    0: Radio Classname <String>                     Default: "ACRE_PRC343"      https://acre2.idi-systems.com/wiki/class-names#radios
+    1: Unit Type(s) <String/Array of Strings>  Default: []
 
 Examples:
     Add PRC-343 radio to player that called function.
@@ -36,7 +36,7 @@ if (playerSide == sideLogic) exitWith {};
 
 params [
     ["_radioType","ACRE_PRC343",[""]],
-    ["_unitTypes",[],[[]]]
+    ["_unitTypes",[],["",[]]]
 ];
 
 private _spawnedRadios = missionNamespace getVariable ["VMF_spawnedRadios",[]];
@@ -48,6 +48,10 @@ if !(_radioType in [
     "ACRE_PRC343","ACRE_PRC148","ACRE_PRC152","ACRE_PRC77",
     "ACRE_PRC117F","ACRE_SEM52SL","ACRE_SEM70","ACRE_BF888S"
 ]) exitWith {["Invalid radio classname passed to VMF_fnc_addRadio: %1",_radioType] call BIS_fnc_error};
+
+if (_unitTypes isEqualType "") then {
+    _unitTypes = [_unitTypes];
+};
 
 private _playerUnit = typeOf player;
 if (_unitTypes isEqualTo []) then {

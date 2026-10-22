@@ -33,26 +33,26 @@ if (_module getVariable ["VMF_enableSafeStart",false]) then {
     missionNamespace setVariable ["VMF_safeStartEnabled",true,true];
     [] remoteExec ["VMF_fnc_safeStartInit",[0,-2] select isDedicated,true];
 
-    diag_log "[VMF initFramework] Safe Start enabled";
+    diag_log "[VMF initFramework] Safe Start Enabled";
 
     private _arsenalFile = _module getVariable ["VMF_arsenalArrayFile","arsenalArrays.sqf]"];
     if (fileExists _arsenalFile) then {
         [_arsenalFile] remoteExec ["VMF_fnc_addArsenal",[0,-2] select isDedicated,true];
 
-        diag_log "[VMF initFramework] Arsenal Array File found, Safe Start Arsenal enabled";
+        diag_log "[VMF initFramework] Arsenal Array File found, Safe Start Arsenal Enabled";
     } else {
-        diag_log "[VMF initFramework] Arsenal Array File not found, Safe Start Arsenal disabled";
+        diag_log "[VMF initFramework] Arsenal Array File not found, Safe Start Arsenal Disabled";
     };
 } else {
-    diag_log "[VMF initFramework] Safe Start disabled";
+    diag_log "[VMF initFramework] Safe Start Disabled";
 };
 
 if (_module getVariable ["VMF_enableMedicalNotification",false]) then {
     [] remoteExec ["VMF_fnc_addMedicalEvent",[0,-2] select isDedicated,true];
 
-    diag_log "[VMF initFramework] ACE Medical Notification enabled";
+    diag_log "[VMF initFramework] ACE Medical Notification Enabled";
 } else {
-    diag_log "[VMF initFramework] ACE Medical Notification disabled";
+    diag_log "[VMF initFramework] ACE Medical Notification Disabled";
 };
 
 if (_module getVariable ["VMF_enableGroupBFT",false]) then {
@@ -62,9 +62,9 @@ if (_module getVariable ["VMF_enableGroupBFT",false]) then {
 
     [_updateDelay,_maxDistance,_friendSideMarkers] remoteExec ["VMF_fnc_groupBftInit",[0,-2] select isDedicated,true];
 
-    diag_log "[VMF initFramework] Group BFT enabled";
+    diag_log "[VMF initFramework] Group BFT Enabled";
 } else {
-    diag_log "[VMF initFramework] Group BFT disabled";
+    diag_log "[VMF initFramework] Group BFT Disabled";
 };
 
 if (_module getVariable ["VMF_enableTeamBFT",false]) then {
@@ -72,27 +72,24 @@ if (_module getVariable ["VMF_enableTeamBFT",false]) then {
 
     [_updateDelay] remoteExec ["VMF_fnc_teamBftInit",[0,-2] select isDedicated,true];
 
-    diag_log "[VMF initFramework] Team BFT enabled";
+    diag_log "[VMF initFramework] Team BFT Enabled";
 } else {
-    diag_log "[VMF initFramework] Team BFT disabled";
+    diag_log "[VMF initFramework] Team BFT Disabled";
+};
+
+
+private _soundTypes = [
+    _module getVariable ["VMF_firefightSounds",false],
+    _module getVariable ["VMF_explosionSounds",false],
+    _module getVariable ["VMF_helicopterSounds",false],
+    _module getVariable ["VMF_jetSounds",false]
+];
+
+private _battlefieldSoundsEnabled = _soundTypes call VMF_fnc_battlefieldSounds;
+if (_battlefieldSoundsEnabled) then {
+    diag_log "[VMF initFramework] Battlefield Sounds Enabled";
+} else {
+    diag_log "[VMF initFramework] Battlefield Sounds Disabled";
 };
 
 diag_log "[VMF initFramework] End VMF Initialisation";
-
-/*
-if (_module getVariable ["VMF_enableBattlefieldSounds",false]) then {
-    private _firefightSounds = _module getVariable ["VMF_firefightSounds","['BattlefieldFirefight1_3D','BattlefieldFirefight2_3D','BatlefieldFirefight3_3D','BattlefieldFirefight4_3D','','']"];
-    private _explosionSounds = _module getVariable ["VMF_explosionSounds","['BattlefieldExplosions1_3D','BattlefieldExplosions2_3D','BattlefieldExplosions3_3D','BattlefieldExplosions4_3D','BattlefieldExplosions5_3D','','','','',']"];
-    private _aircraftSounds = _module getVariable ["VMF_aircraftSounds","['BattlefieldHeli1_3D','BattlefieldHeli2_3D','BattlefieldHeli3_3D','BattlefieldJet1_3D','BattlefieldJet2_3D','BattlefieldJet3_3D','','','','','','']"];
-
-    _firefightSounds = _firefightSounds splitString " " joinString "" splitString ",";
-    _explosionSounds = _explosionSounds splitString " " joinString "" splitString ",";
-    _aircraftSounds = _aircraftSounds splitString " " joinString "" splitString ",";
-
-    [_firefightSounds,_explosionSounds,_aircraftSounds] remoteExec [QEFUNC(presentation,battlefieldSounds)[0,-2] select isDedicated,true];
-};
-*/
-
-
-
-

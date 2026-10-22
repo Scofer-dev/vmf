@@ -119,18 +119,40 @@ class CfgVehicles {
                 validate = "number";
             };
 
-            class ModuleDescription: ModuleDescription{};
-        };
 
-
-            /*
-            
             class VMF_battlefieldSoundsSubCat {
                 property = "VMF_battlefieldSoundsSubCat";
                 title = "Battlefield Sounds";
                 control = "SubCategoryDesc1";
                 description = "Enable different types of distant battlefield sounds";
             };
+
+            class VMF_firefightSounds: Checkbox {
+                property = "VMF_firefightSounds";
+                displayName ="Firefight Sounds";
+                tooltip = "Adds distant firefight sounds to the possible sounds to play";
+                defaultValue = "false";
+            };
+            class VMF_explosionSounds: Checkbox {
+                property = "VMF_explosionSounds";
+                displayName ="Explosion Sounds";
+                tooltip = "Adds distant explosion sounds to the possible sounds to play";
+                defaultValue = "false";
+            };
+            class VMF_helicopterSounds: Checkbox {
+                property = "VMF_helicopterSounds";
+                displayName ="Helicopter Sounds";
+                tooltip = "Adds distant helicopter sounds to the possible sounds to play";
+                defaultValue = "false";
+            };
+            class VMF_jetSounds: Checkbox {
+                property = "VMF_jetSounds";
+                displayName ="Jet Sounds";
+                tooltip = "Adds distant jet sounds to the possible sounds to play";
+                defaultValue = "false";
+            };
+
+            /*
             class VMF_enableBattlefieldSounds: Checkbox {
                 property = "VMF_enableBattlefieldSounds";
                 displayName = "Enable Battlefield Sounds";
@@ -140,28 +162,30 @@ class CfgVehicles {
             class VMF_firefightSounds: Edit {
                 property = "VMF_firefightSounds";
                 displayName ="Firefight Sounds";
-                tooltip = "Array of firefight sounds that can be played. Sounds must be defined in CfgSounds";
-                defaultValue = ""["BattlefieldFirefight1_3D","BattlefieldFirefight2_3D","BattlefieldFirefight3_3D","BattlefieldFirefight4_3D","",""]"";
+                tooltip = "Array of firefight sounds that can be played. Sounds must be defined in CfgSounds. Set to [] to disable.";
+                defaultValue = "['BattlefieldFirefight1_3D','BattlefieldFirefight2_3D','BattlefieldFirefight3_3D','BattlefieldFirefight4_3D','','']";
             };
             class VMF_explosionSounds: Edit {
                 property = "VMF_explosionSounds";
                 displayName ="Explosion Sounds";
-                tooltip = "Array of explsions sounds that can be played. Sounds must be defined in CfgSounds";
-                defaultValue = ""["BattlefieldExplosions1_3D","BattlefieldExplosions2_3D","BattlefieldExplosions3_3D","BattlefieldExplosions4_3D","BattlefieldExplosions5_3D","","","","",""]"";
+                tooltip = "Array of explsions sounds that can be played. Sounds must be defined in CfgSounds. Set to [] to disable.";
+                defaultValue = "['BattlefieldExplosions1_3D','BattlefieldExplosions2_3D','BattlefieldExplosions3_3D','BattlefieldExplosions4_3D','BattlefieldExplosions5_3D','','','','','']";
             };
             class VMF_aircraftSounds: Edit {
                 property = "VMF_aircraftSounds";
                 displayName ="Aircraft Sounds";
-                tooltip = "Array of aircraft sounds that can be played. Sounds must be defined in CfgSounds";
-                defaultValue = ""["BattlefieldHeli1_3D","BattlefieldHeli2_3D","BattlefieldHeli3_3D","BattlefieldJet1_3D","BattlefieldJet2_3D","BattlefieldJet3_3D","","","","","",""]"";
+                tooltip = "Array of aircraft sounds that can be played. Sounds must be defined in CfgSounds. Set to [] to disable.";
+                defaultValue = "['BattlefieldHeli1_3D','BattlefieldHeli2_3D','BattlefieldHeli3_3D','BattlefieldJet1_3D','BattlefieldJet2_3D','BattlefieldJet3_3D','','','','','','']";
             };
             */
-        
+
+            class ModuleDescription: ModuleDescription{};
+        };
 
         class ModuleDescription: ModuleDescription {
             description[] = {
                 "Initialises the Void Mission Framework",
-                "Individual features can be enabled and disabled in the module attributes"
+                "Individual features can be enabled and configured"
             };
         };
     };

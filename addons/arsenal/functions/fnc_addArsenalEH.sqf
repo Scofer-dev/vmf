@@ -87,19 +87,16 @@ if (playerSide == sideLogic) exitWith {};
 //Saves loadout when player changes uniform/vest/backpack cargo
 ["ace_arsenal_cargoChanged",{
     player setVariable ["VMF_arsenalLoadout",getUnitLoadout player];
-    systemChat "cargoChanged";
 }] call CBA_fnc_addEventHandler;;
 
 //Saves loadout when player changes weapon attachment
 ["ace_arsenal_weaponItemChanged",{
     player setVariable ["VMF_arsenalLoadout",getUnitLoadout player];
-    systemChat "weaponItemChanged";
 }] call CBA_fnc_addEventHandler;;
 
 //Saves loadout when player changes item
 ["ace_arsenal_itemsChanged",{
     player setVariable ["VMF_arsenalLoadout",getUnitLoadout player];
-    systemChat "itemsChanged";
 }] call CBA_fnc_addEventHandler;;
 
 //Reverts loadout to a previously saved version when player attempts to import with Ctrl+C

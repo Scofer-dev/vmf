@@ -70,7 +70,7 @@ private _firedEH = player addEventHandler ["Fired", {
 }];
 
 //Prevents placing ACE explosives
-["ace_explosives_setup",{
+private _aceExplosiveSetupEH = ["ace_explosives_setup",{
     _this params ["_explosive","_magClassname","_unit"];
     
     deleteVehicle _explosive;
@@ -80,7 +80,7 @@ private _firedEH = player addEventHandler ["Fired", {
     hintSilent "Safe Start is Active!";
 }] call CBA_fnc_addEventHandler;
 
-player setVariable ["VMF_safeStart_params",[_aceThrowing,_fireAction,_firedEH]];
+player setVariable ["VMF_safeStart_params",[_aceThrowing,_fireAction,_firedEH,_aceExplosiveSetupEH]];
 
 //Displays the Safe Start Active box
 [
@@ -92,7 +92,8 @@ player setVariable ["VMF_safeStart_params",[_aceThrowing,_fireAction,_firedEH]];
 			player getVariable "VMF_safeStart_params" params [
 				"_aceThrowing",
 				"_fireAction",
-				"_firedEH"
+				"_firedEH",
+				"_aceExplosiveSetupEH"
 			];
 			
 			if (playerSide != sideLogic) then {
@@ -107,6 +108,8 @@ player setVariable ["VMF_safeStart_params",[_aceThrowing,_fireAction,_firedEH]];
 			[player,"DefaultAction",_fireAction] call ace_common_fnc_removeActionEventHandler;
 
 			player removeEventHandler ["Fired",_firedEH];
+
+			["ace_explosives_setup",_aceExplosiveSetupEH] call CBA_fnc_removeEventHandler;
 
 			[_handle] call CBA_fnc_removePerFrameHandler;
 			

@@ -17,6 +17,7 @@ class CfgFunctions {
     class VMF {
         class safeStart {
             PATHTO_FNCFOLDER(safeStartInit);
+            PATHTO_FNCFOLDER(safeStartBounce);
         };
         class missionStart {
             PATHTO_FNCFOLDER(missionStartDialog);

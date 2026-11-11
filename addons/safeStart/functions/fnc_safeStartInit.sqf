@@ -37,15 +37,7 @@ missionNamespace setVariable ["VMF_safeStartRunning",true];
 
 player allowDamage false;
 
-//Find out the current status of ACE Advanced Throwing so it can be restored to that state when Safe Start ends
-private _aceThrowing = ace_advanced_throwing_enabled;
-//Disable throwing
-ace_advanced_throwing_enabled = false;
-
-//Make player immune to WBK melee damage
-player setVariable ['IMS_IsUnitInvicibleScripted',1,true];
-
-//Prevents firing of weapons. Removed weapon dry sfx as it was annoying. In future may try making the sound only play for the player that clicked, rather than using a 3D sound
+//Prevents firing of weapons
 private _fireAction = [
 	player,
 	"DefaultAction",
@@ -55,7 +47,7 @@ private _fireAction = [
 	}
 ] call ace_common_fnc_addActionEventHandler;
 
-//Extra check that deletes projectiles if weapon is fired
+//Extra check that deletes projectiles if weapon is fired, also prevents grenade throwing
 private _firedEH = player addEventHandler ["Fired", {
 	params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
 
@@ -65,12 +57,18 @@ private _firedEH = player addEventHandler ["Fired", {
 	if (_weapon == "Throw") then {
 		_unit addMagazine _magazine;
 	};
-
-	hintSilent "Safe Start is Active!";
 }];
 
+//Find out the current status of ACE Advanced Throwing so it can be restored to that state when Safe Start ends
+private _aceThrowing = ace_advanced_throwing_enabled;
+//Disable throwing
+ace_advanced_throwing_enabled = false;
+
+//Make player immune to WBK melee damage
+player setVariable ['IMS_IsUnitInvicibleScripted',1,true];
+
 //Prevents placing ACE explosives
-private _aceExplosiveSetupEH = ["ace_explosives_setup",{
+private _explosiveSetupEH = ["ace_explosives_setup",{
     _this params ["_explosive","_magClassname","_unit"];
     
     deleteVehicle _explosive;
@@ -80,42 +78,31 @@ private _aceExplosiveSetupEH = ["ace_explosives_setup",{
     hintSilent "Safe Start is Active!";
 }] call CBA_fnc_addEventHandler;
 
-player setVariable ["VMF_safeStart_params",[_aceThrowing,_fireAction,_firedEH,_aceExplosiveSetupEH]];
+"VMF_safeStart" cutRsc ["VMF_safeStart","PLAIN",0];
 
-//Displays the Safe Start Active box
-[
-	{
-		if (missionNamespace getVariable ["VMF_safeStartEnabled",false]) then {
-			"VMF_safeStart_layer" cutRsc ["VMF_safeStart_enabled","PLAIN",0];
-		} else { //Once Safe Start is disabled enable everything
-			private _handle = _this select 1;
-			player getVariable "VMF_safeStart_params" params [
-				"_aceThrowing",
-				"_fireAction",
-				"_firedEH",
-				"_aceExplosiveSetupEH"
-			];
-			
-			if (playerSide != sideLogic) then {
-				player allowDamage true;
-			};
+waitUntil {sleep 0.5; !(missionNamespace getVariable ["VMF_safeStartRunning",false])};
 
-			ace_advanced_throwing_enabled = _aceThrowing;
+//Re-enable player damage
+if (playerSide != sideLogic) then {
+	player allowDamage true;
+};
 
-			//Remove player WBK melee immunity
-			player setVariable ['IMS_IsUnitInvicibleScripted',nil,true];
+//Allow players to shoot
+[player,"DefaultAction",_fireAction] call ace_common_fnc_removeActionEventHandler;
 
-			[player,"DefaultAction",_fireAction] call ace_common_fnc_removeActionEventHandler;
+//Allow players to throw grenades
+player removeEventHandler ["Fired",_firedEH];
 
-			player removeEventHandler ["Fired",_firedEH];
+//Revert ACE Grenade Throwing to whatever it started as
+ace_advanced_throwing_enabled = _aceThrowing;
 
-			["ace_explosives_setup",_aceExplosiveSetupEH] call CBA_fnc_removeEventHandler;
+//Remove player WBK melee immunity
+player setVariable ['IMS_IsUnitInvicibleScripted',nil,true];
 
-			[_handle] call CBA_fnc_removePerFrameHandler;
-			
-			//Shows the Safe Start disabled box, which fades after a few seconds
-			"VMF_safeStart_layer" cutRsc ["VMF_safeStart_disabled","PLAIN"];
-		};
-	},
-	0.5
-] call CBA_fnc_addPerFrameHandler;
+["ace_explosives_setup",_explosiveSetupEH] call CBA_fnc_removeEventHandler;
+
+private _ctrl = uiNamespace getVariable "VMF_safeStart";
+_ctrl ctrlSetText "Safe Start Disabled";
+_ctrl ctrlSetBackgroundColor [0.8,0.2,0.2,1];
+
+"VMF_safeStart" cutFadeOut 5;

@@ -5,7 +5,7 @@ class CfgPatches {
         name = COMPONENT_NAME;
         units[] = {"VMF_frameworkSettings"};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_main"};
+        requiredAddons[] = {"cba_main","zen_main"};
         author = "Scofer";
         VERSION_CONFIG;
     };
